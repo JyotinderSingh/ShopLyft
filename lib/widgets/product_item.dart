@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../screens/product_detail_screen.dart';
+import '../providers/product.dart';
 
 class ProductItem extends StatelessWidget {
-  final String id;
-  final String title;
-  final String imageUrl;
-  final double price;
+  // final String id;
+  // final String title;
+  // final String imageUrl;
+  // final double price;
 
-  ProductItem(this.id, this.title, this.imageUrl, this.price);
+  // ProductItem(this.id, this.title, this.imageUrl, this.price);
 
   @override
   Widget build(BuildContext context) {
+    final product = Provider.of<Product>(context, listen: false);
     return Container(
       decoration: new BoxDecoration(
         boxShadow: [
@@ -33,17 +36,17 @@ class ProductItem extends StatelessWidget {
             onTap: () {
               Navigator.of(context).pushNamed(
                 ProductDetailScreen.routeName,
-                arguments: id,
+                arguments: product.id,
               );
             },
             child: Image.network(
-              imageUrl,
+              product.imageUrl,
               fit: BoxFit.cover,
             ),
           ),
           header: GridTileBar(
             title: Text(
-              '\$ ${price.toString()}',
+              '\$ ${product.price.toString()}',
               style: TextStyle(fontSize: 15, shadows: [
                 Shadow(
                   blurRadius: 14.0,
@@ -58,15 +61,21 @@ class ProductItem extends StatelessWidget {
           ),
           footer: GridTileBar(
             backgroundColor: Color.fromRGBO(0, 0, 0, 0.7),
-            leading: IconButton(
-              icon: Icon(Icons.favorite),
-              onPressed: () {},
-              color: Theme.of(context).accentColor,
+            leading: Consumer<Product>(
+              builder: (ctx, product, _) => IconButton(
+                icon: Icon(product.isFavourite
+                    ? Icons.favorite
+                    : Icons.favorite_border),
+                onPressed: () {
+                  product.toggleFavouriteStatus();
+                },
+                color: Theme.of(context).accentColor,
+              ),
             ),
             title: FittedBox(
               fit: BoxFit.scaleDown,
               child: Text(
-                title,
+                product.title,
                 textAlign: TextAlign.center,
               ),
             ),
