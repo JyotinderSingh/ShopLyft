@@ -62,7 +62,7 @@ class ProductItem extends StatelessWidget {
             ),
           ),
           footer: GridTileBar(
-            backgroundColor: Color.fromRGBO(0, 0, 0, 0.7),
+            backgroundColor: Color.fromRGBO(30, 15, 59, 0.85),
             leading: Consumer<Product>(
               builder: (ctx, product, _) => IconButton(
                 icon: Icon(product.isFavourite
@@ -81,12 +81,17 @@ class ProductItem extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
             ),
-            trailing: IconButton(
-              icon: Icon(Icons.shopping_cart),
-              onPressed: () {
-                cart.addItem(product.id, product.price, product.title);
-              },
-              color: Theme.of(context).accentColor,
+            trailing: Material(
+              color: Color.fromRGBO(30, 15, 59, 0),
+              child: InkWell(
+                child: IconButton(
+                  icon: Icon(Icons.shopping_cart),
+                  onPressed: () {
+                    cart.addItem(product.id, product.price, product.title);
+                  },
+                  color: Theme.of(context).accentColor,
+                ),
+              ),
             ),
           ),
         ),
