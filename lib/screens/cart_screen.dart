@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../providers/cart.dart' show Cart;
 import '../widgets/cart_item.dart';
+import '../providers/orders.dart';
 
 class CartScreen extends StatelessWidget {
   static const routeName = '/cart';
@@ -31,7 +32,7 @@ class CartScreen extends StatelessWidget {
                   Spacer(),
                   Chip(
                     label: Text(
-                      '\$${cart.totalAmount}',
+                      '\$${cart.totalAmount.toStringAsFixed(2)}',
                       style: TextStyle(
                         color: Theme.of(context).primaryTextTheme.title.color,
                       ),
@@ -43,7 +44,13 @@ class CartScreen extends StatelessWidget {
                   ),
                   FlatButton(
                     child: Text('ORDER NOW'),
-                    onPressed: () {},
+                    onPressed: () {
+                      Provider.of<Orders>(context, listen: false).addOrder(
+                        cart.items.values.toList(),
+                        cart.totalAmount,
+                      );
+                      cart.clear();
+                    },
                     textColor: Theme.of(context).primaryColor,
                   )
                 ],
@@ -67,13 +74,19 @@ class CartScreen extends StatelessWidget {
                   ),
                 )
               : Container(
-                margin: EdgeInsets.only(top: 50),
-                child: Center(
+                  margin: EdgeInsets.only(top: 50),
+                  child: Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Icon(Icons.shopping_cart, size: 150, color: Colors.black26,),
-                        SizedBox(height: 15,),
+                        Icon(
+                          Icons.shopping_cart,
+                          size: 150,
+                          color: Colors.black26,
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
                         Text(
                           'Cart is empty!',
                           style: TextStyle(
@@ -84,7 +97,7 @@ class CartScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-              )
+                )
         ],
       ),
     );

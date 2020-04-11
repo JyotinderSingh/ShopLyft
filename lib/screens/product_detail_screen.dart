@@ -78,11 +78,17 @@ class ProductDetailScreen extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.only(bottom: 15),
                     alignment: Alignment.bottomCenter,
-                    child: Text(
-                      "Tap to view in fullscreen",
-                      style: TextStyle(
-                        color: Colors.black45,
-                        fontWeight: FontWeight.bold,
+                    child: Opacity(
+                      opacity: 0.25,
+                      child: Chip(
+                        backgroundColor: Colors.black,
+                        label: Text(
+                          "Tap to view in fullscreen",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
                     ),
                   ),
