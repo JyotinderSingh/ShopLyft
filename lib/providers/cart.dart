@@ -65,4 +65,33 @@ class Cart with ChangeNotifier {
     _items.remove(productId);
     notifyListeners();
   }
+
+  void decreaseQuantity(String productId) {
+    // remove final from in front of quantity if using this function
+    _items.update(
+        productId,
+        (ExistingItem) => CartItem(
+              id: ExistingItem.id,
+              title: ExistingItem.title,
+              price: ExistingItem.price,
+              quantity: ExistingItem.quantity - 1,
+            ));
+    if (_items[productId].quantity == 0) {
+      removeItem(productId);
+    }
+    notifyListeners();
+  }
+
+  void increaseQuantity(String productId) {
+    // remove final from in front of quantity if using this function
+    _items.update(
+        productId,
+        (ExistingItem) => CartItem(
+              id: ExistingItem.id,
+              title: ExistingItem.title,
+              price: ExistingItem.price,
+              quantity: ExistingItem.quantity + 1,
+            ));
+    notifyListeners();
+  }
 }

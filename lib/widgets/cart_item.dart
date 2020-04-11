@@ -60,7 +60,43 @@ class CartItem extends StatelessWidget {
             ),
             title: Text(title),
             subtitle: Text('Total: \$${price * quantity}'),
-            trailing: Text('$quantity x'),
+            trailing: Wrap(
+              spacing: 2,
+              children: <Widget>[
+                Tooltip(
+                  message: 'Decrease Quantity',
+                  child: IconButton(
+                    splashColor:
+                        Theme.of(context).primaryColor.withOpacity(0.5),
+                    icon: Icon(Icons.remove_circle_outline),
+                    onPressed: () => Provider.of<Cart>(context, listen: false)
+                        .decreaseQuantity(productId),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 10),
+                  child: Text(
+                    '$quantity x',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.black54,
+                    ),
+                  ),
+                ),
+                Tooltip(
+                  message: 'Increase Quantity',
+                  child: IconButton(
+                    splashColor:
+                        Theme.of(context).primaryColor.withOpacity(0.5),
+                    icon: Icon(Icons.add_circle_outline),
+                    onPressed: () => Provider.of<Cart>(context, listen: false)
+                        .increaseQuantity(productId),
+                  ),
+                ),
+              ],
+            ),
+
+            // Text('$quantity x'),
           ),
         ),
       ),
