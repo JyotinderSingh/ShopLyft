@@ -53,18 +53,38 @@ class CartScreen extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: cart.items.length,
-              itemBuilder: (ctx, i) => CartItem(
-                cart.items.values.toList()[i].id,
-                cart.items.keys.toList()[i],
-                cart.items.values.toList()[i].price,
-                cart.items.values.toList()[i].quantity,
-                cart.items.values.toList()[i].title,
-              ),
-            ),
-          )
+          cart.items.length > 0
+              ? Expanded(
+                  child: ListView.builder(
+                    itemCount: cart.items.length,
+                    itemBuilder: (ctx, i) => CartItem(
+                      cart.items.values.toList()[i].id,
+                      cart.items.keys.toList()[i],
+                      cart.items.values.toList()[i].price,
+                      cart.items.values.toList()[i].quantity,
+                      cart.items.values.toList()[i].title,
+                    ),
+                  ),
+                )
+              : Container(
+                margin: EdgeInsets.only(top: 50),
+                child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Icon(Icons.shopping_cart, size: 150, color: Colors.black26,),
+                        SizedBox(height: 15,),
+                        Text(
+                          'Cart is empty!',
+                          style: TextStyle(
+                            fontSize: 25,
+                            color: Colors.black45,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+              )
         ],
       ),
     );
