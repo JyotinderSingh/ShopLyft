@@ -85,7 +85,7 @@ class ProductItem extends StatelessWidget {
               color: Color.fromRGBO(30, 15, 59, 0),
               child: InkWell(
                 child: IconButton(
-                  icon: Icon(Icons.shopping_cart),
+                  icon: Icon(Icons.add_shopping_cart),
                   onPressed: () {
                     cart.addItem(product.id, product.price, product.title);
                   },

@@ -1,11 +1,20 @@
 import 'package:flutter/foundation.dart';
 
-class Product with ChangeNotifier{
+enum Category {
+  Clothing,
+  Kitchen,
+  Home,
+  Electronics,
+  Kids,
+}
+
+class Product with ChangeNotifier {
   final String id;
   final String title;
   final String description;
   final double price;
   final String imageUrl;
+  final Category category;
   bool isFavourite;
 
   Product({
@@ -14,6 +23,7 @@ class Product with ChangeNotifier{
     @required this.description,
     @required this.imageUrl,
     @required this.price,
+    @required this.category,
     this.isFavourite = false,
   });
 

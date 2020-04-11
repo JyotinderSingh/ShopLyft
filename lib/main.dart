@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        title: 'MyShop',
+        title: 'ShopLyft',
         theme: ThemeData(
           primarySwatch: Colors.deepPurple,
           accentColor: Colors.pink,

@@ -53,7 +53,7 @@ class CartItem extends StatelessWidget {
                 padding: EdgeInsets.all(5),
                 child: FittedBox(
                   child: Text(
-                    '\$${price}',
+                    '\$$price',
                   ),
                 ),
               ),

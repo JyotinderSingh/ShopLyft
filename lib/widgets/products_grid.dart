@@ -39,7 +39,7 @@ class ProductsGrid extends StatelessWidget {
                   height: 10,
                 ),
                 Text(
-                  'Try Adding products to your favourites\nto view them here',
+                  'Try adding products to your favourites\nto view them here',
                   style: TextStyle(
                     color: Colors.black54,
                     fontSize: 17,
