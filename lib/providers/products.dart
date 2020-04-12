@@ -6,7 +6,7 @@ class Products with ChangeNotifier {
   List<Product> _items = [
     Product(
       id: 'p1',
-      category: Category.Clothing,
+      category: Categories.Clothing,
       title: 'Red Shirt',
       description: 'A red shirt - it is pretty red!',
       price: 29.99,
@@ -15,7 +15,7 @@ class Products with ChangeNotifier {
     ),
     Product(
       id: 'p2',
-      category: Category.Clothing,
+      category: Categories.Clothing,
       title: 'Trousers',
       description: 'A nice pair of trousers.',
       price: 59.99,
@@ -24,7 +24,7 @@ class Products with ChangeNotifier {
     ),
     Product(
       id: 'p3',
-      category: Category.Clothing,
+      category: Categories.Clothing,
       title: 'Yellow Scarf',
       description: 'Warm and cozy - exactly what you need for the winter.',
       price: 19.99,
@@ -33,7 +33,7 @@ class Products with ChangeNotifier {
     ),
     Product(
       id: 'p4',
-      category: Category.Kitchen,
+      category: Categories.Kitchen,
       title: 'Pan',
       description: 'Prepare any meal you want.',
       price: 49.99,
@@ -42,7 +42,7 @@ class Products with ChangeNotifier {
     ),
     Product(
       id: 'p5',
-      category: Category.Clothing,
+      category: Categories.Clothing,
       title: 'Red Shirt',
       description: 'A red shirt - it is pretty red!',
       price: 29.99,
@@ -51,7 +51,7 @@ class Products with ChangeNotifier {
     ),
     Product(
       id: 'p6',
-      category: Category.Clothing,
+      category: Categories.Clothing,
       title: 'Trousers',
       description: 'A nice pair of trousers.',
       price: 59.99,
@@ -60,7 +60,7 @@ class Products with ChangeNotifier {
     ),
     Product(
       id: 'p7',
-      category: Category.Clothing,
+      category: Categories.Clothing,
       title: 'Yellow Scarf',
       description: 'Warm and cozy - exactly what you need for the winter.',
       price: 19.99,
@@ -69,7 +69,7 @@ class Products with ChangeNotifier {
     ),
     Product(
       id: 'p8',
-      category: Category.Kitchen,
+      category: Categories.Kitchen,
       title: 'Pan',
       description: 'Prepare any meal you want.',
       price: 49.99,

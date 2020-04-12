@@ -11,22 +11,25 @@ import '../screens/cart_screen.dart';
 class ProductDetailScreen extends StatelessWidget {
   static const routeName = '/product-detail';
 
-  String categoryName(Category cat) {
+  String categoryName(Categories cat) {
     switch (cat) {
-      case Category.Clothing:
+      case Categories.Clothing:
         return 'Clothing';
         break;
-      case Category.Electronics:
+      case Categories.Electronics:
         return 'Electronics';
         break;
-      case Category.Home:
+      case Categories.Home:
         return 'Home';
         break;
-      case Category.Kids:
+      case Categories.Kids:
         return 'Kids';
         break;
-      case Category.Kitchen:
+      case Categories.Kitchen:
         return 'Kitchenware';
+        break;
+      case Categories.Uncategorized:
+        return 'General';
         break;
       default:
         return '';
