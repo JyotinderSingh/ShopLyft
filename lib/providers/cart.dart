@@ -66,32 +66,41 @@ class Cart with ChangeNotifier {
     notifyListeners();
   }
 
-  void decreaseQuantity(String productId) {
+  void removeSingleItem(String productId) {
     // remove final from in front of quantity if using this function
-    _items.update(
-        productId,
-        (ExistingItem) => CartItem(
-              id: ExistingItem.id,
-              title: ExistingItem.title,
-              price: ExistingItem.price,
-              quantity: ExistingItem.quantity - 1,
-            ));
-    if (_items[productId].quantity == 0) {
-      removeItem(productId);
+    if (_items.containsKey(productId)) {
+      if (_items[productId].quantity > 1) {
+        _items.update(
+            productId,
+            (ExistingItem) => CartItem(
+                  id: ExistingItem.id,
+                  title: ExistingItem.title,
+                  price: ExistingItem.price,
+                  quantity: ExistingItem.quantity - 1,
+                ));
+      } else {
+        removeItem(productId);
+      }
+      notifyListeners();
+    } else {
+      return;
     }
-    notifyListeners();
   }
 
   void increaseQuantity(String productId) {
     // remove final from in front of quantity if using this function
-    _items.update(
-        productId,
-        (ExistingItem) => CartItem(
-              id: ExistingItem.id,
-              title: ExistingItem.title,
-              price: ExistingItem.price,
-              quantity: ExistingItem.quantity + 1,
-            ));
+    if (_items.containsKey(productId)) {
+      _items.update(
+          productId,
+          (ExistingItem) => CartItem(
+                id: ExistingItem.id,
+                title: ExistingItem.title,
+                price: ExistingItem.price,
+                quantity: ExistingItem.quantity + 1,
+              ));
+    } else {
+      return;
+    }
     notifyListeners();
   }
 

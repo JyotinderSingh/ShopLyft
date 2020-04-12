@@ -70,7 +70,7 @@ class CartItem extends StatelessWidget {
                         Theme.of(context).primaryColor.withOpacity(0.5),
                     icon: Icon(Icons.remove_circle_outline),
                     onPressed: () => Provider.of<Cart>(context, listen: false)
-                        .decreaseQuantity(productId),
+                        .removeSingleItem(productId),
                   ),
                 ),
                 Container(
