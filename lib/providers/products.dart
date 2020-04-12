@@ -128,4 +128,9 @@ class Products with ChangeNotifier {
       print('Cant edit product which doesnt exist');
     }
   }
+
+  void deleteProduct(String id) {
+    _items.removeWhere((prod) => prod.id == id);
+    notifyListeners();
+  }
 }
