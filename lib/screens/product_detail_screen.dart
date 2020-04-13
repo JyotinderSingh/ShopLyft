@@ -161,23 +161,6 @@ class ProductDetailScreen extends StatelessWidget {
               height: 10,
             ),
             Container(
-              padding: EdgeInsets.symmetric(
-                horizontal: 5,
-              ),
-              width: double.infinity,
-              alignment: Alignment.topCenter,
-              margin: EdgeInsets.symmetric(
-                horizontal: 20,
-                vertical: 20,
-              ),
-              child: Text(
-                loadedProduct.description,
-                style: TextStyle(fontSize: 17),
-                softWrap: true,
-                overflow: TextOverflow.fade,
-              ),
-            ),
-            Container(
               margin: EdgeInsets.symmetric(
                 horizontal: 30,
                 vertical: 15,
@@ -200,7 +183,25 @@ class ProductDetailScreen extends StatelessWidget {
                   );
                 },
               ),
-            )
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(
+                horizontal: 5,
+              ),
+              width: double.infinity,
+              alignment: Alignment.topCenter,
+              margin: EdgeInsets.symmetric(
+                horizontal: 20,
+                vertical: 20,
+              ),
+              child: Text(
+                loadedProduct.description,
+                style: TextStyle(fontSize: 17),
+                softWrap: true,
+                overflow: TextOverflow.fade,
+              ),
+            ),
+            
           ],
         ),
       ),

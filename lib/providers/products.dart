@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:enum_to_string/enum_to_string.dart';
 
 import './product.dart';
 
@@ -105,18 +108,37 @@ class Products with ChangeNotifier {
   //   notifyListeners();
   // }
 
-  void addProduct(Product product) {
-    final newProduct = Product(
-      title: product.title,
-      category: product.category,
-      description: product.description,
-      imageUrl: product.imageUrl,
-      price: product.price,
-      id: DateTime.now().toString(),
-    );
-    _items.add(newProduct);
-    // items.insert(0, newProduct);
-    notifyListeners();
+  Future<void> addProduct(Product product) {
+    final url = 'https://shoplyft-96262.firebaseio.com/products.json';
+    return http
+        .post(
+      url,
+      body: json.encode({
+        'title': product.title,
+        'description': product.description,
+        'imageUrl': product.imageUrl,
+        'price': product.price,
+        'isFavourite': product.isFavourite,
+        'category': EnumToString.parse(product.category),
+      }),
+    )
+        .then((response) {
+      final newProduct = Product(
+        title: product.title,
+        category: product.category,
+        description: product.description,
+        imageUrl: product.imageUrl,
+        price: product.price,
+        id: json.decode(response.body)['name'],
+      );
+      _items.add(newProduct);
+      // items.insert(0, newProduct);
+      notifyListeners();
+    }).catchError((error) {
+      print(error);
+      throw error; // so that we can catch it in the edit products screen
+    });
+    // print(EnumToString.fromString(Categories.values, 'Clothing'));
   }
 
   void updateProduct(String id, Product newProduct) {
