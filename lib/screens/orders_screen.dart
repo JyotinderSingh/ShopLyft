@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'dart:math';
 
 import '../providers/orders.dart' show Orders;
 import '../widgets/order_item.dart';
@@ -39,10 +40,36 @@ class _OrdersScreenState extends State<OrdersScreen> {
       drawer: AppDrawer(),
       body: _isLoading
           ? Center(child: CircularProgressIndicator())
-          : ListView.builder(
-              itemCount: orderData.orders.length,
-              itemBuilder: (ctx, i) => OrderItem(orderData.orders[i]),
-            ),
+          : orderData.orders.length == 0
+              ? Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Transform.rotate(
+                        angle: -pi / 12.0,
+                        child: Icon(
+                          Icons.payment,
+                          size: 100,
+                          color: Colors.black38,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Text(
+                        'No Orders Yet',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.black45,
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              : ListView.builder(
+                  itemCount: orderData.orders.length,
+                  itemBuilder: (ctx, i) => OrderItem(orderData.orders[i]),
+                ),
     );
   }
 }
