@@ -8,9 +8,14 @@ import '../providers/products.dart';
 import '../widgets/badge.dart';
 import '../screens/cart_screen.dart';
 
-class ProductDetailScreen extends StatelessWidget {
+class ProductDetailScreen extends StatefulWidget {
   static const routeName = '/product-detail';
 
+  @override
+  _ProductDetailScreenState createState() => _ProductDetailScreenState();
+}
+
+class _ProductDetailScreenState extends State<ProductDetailScreen> {
   String categoryName(Categories cat) {
     switch (cat) {
       case Categories.Clothing:
@@ -201,7 +206,6 @@ class ProductDetailScreen extends StatelessWidget {
                 overflow: TextOverflow.fade,
               ),
             ),
-            
           ],
         ),
       ),
@@ -211,7 +215,11 @@ class ProductDetailScreen extends StatelessWidget {
         // onPressed: () {
         // },
         // color: Theme.of(context).accentColor,
-        onPressed: loadedProduct.toggleFavouriteStatus,
+        onPressed: () {
+          setState(() {
+            loadedProduct.toggleFavouriteStatus();
+          });
+        },
       ),
     );
   }
