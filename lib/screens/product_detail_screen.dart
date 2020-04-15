@@ -7,6 +7,7 @@ import '../providers/cart.dart';
 import '../providers/products.dart';
 import '../widgets/badge.dart';
 import '../screens/cart_screen.dart';
+import '../providers/auth.dart';
 
 class ProductDetailScreen extends StatefulWidget {
   static const routeName = '/product-detail';
@@ -47,6 +48,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         ModalRoute.of(context).settings.arguments as String; // is the id!
     final loadedProduct = Provider.of<Products>(context).findById(productId);
     final cart = Provider.of<Cart>(context, listen: false);
+    final authData = Provider.of<Auth>(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -217,7 +219,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         // color: Theme.of(context).accentColor,
         onPressed: () {
           setState(() {
-            loadedProduct.toggleFavouriteStatus();
+            loadedProduct.toggleFavouriteStatus(authData.token);
           });
         },
       ),
