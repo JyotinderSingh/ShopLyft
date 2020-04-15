@@ -219,7 +219,10 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         // color: Theme.of(context).accentColor,
         onPressed: () {
           setState(() {
-            loadedProduct.toggleFavouriteStatus(authData.token);
+            loadedProduct.toggleFavouriteStatus(
+              authData.token,
+              authData.userId,
+            );
           });
         },
       ),
