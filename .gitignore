@@ -38,3 +38,6 @@ lib/generated_plugin_registrant.dart
 
 #API KEY
 /lib/secrets/
+
+# APP KEY
+**/android/key.properties

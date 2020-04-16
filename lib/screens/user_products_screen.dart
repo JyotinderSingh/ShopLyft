@@ -42,14 +42,47 @@ class UserProductsScreen extends StatelessWidget {
                     child: Consumer<Products>(
                       builder: (ctx, productsData, _) => Padding(
                         padding: EdgeInsets.all(10),
-                        child: ListView.builder(
-                          itemCount: productsData.items.length,
-                          itemBuilder: (_, i) => UserProductItem(
-                            productsData.items[i].id,
-                            productsData.items[i].title,
-                            productsData.items[i].imageUrl,
-                          ),
-                        ),
+                        child: productsData.items.length == 0
+                            ? Center(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Icon(
+                                      Icons.widgets,
+                                      size: 80,
+                                      color: Colors.grey,
+                                    ),
+                                    SizedBox(
+                                      height: 15,
+                                    ),
+                                    Text(
+                                      'No products found',
+                                      style: TextStyle(
+                                        color: Colors.grey,
+                                        fontSize: 25,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text(
+                                      'Get started by hitting the + icon',
+                                      style: TextStyle(
+                                        color: Colors.grey,
+                                        fontSize: 15,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            : ListView.builder(
+                                itemCount: productsData.items.length,
+                                itemBuilder: (_, i) => UserProductItem(
+                                  productsData.items[i].id,
+                                  productsData.items[i].title,
+                                  productsData.items[i].imageUrl,
+                                ),
+                              ),
                       ),
                     ),
                   ),
