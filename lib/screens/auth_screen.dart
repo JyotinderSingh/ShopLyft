@@ -62,7 +62,7 @@ class AuthScreen extends StatelessWidget {
                             style: TextStyle(
                               color:
                                   Theme.of(context).accentTextTheme.title.color,
-                              fontSize: 50,
+                              fontSize: 35,
                               // fontFamily: 'Anton',
                               fontWeight: FontWeight.bold,
                             ),

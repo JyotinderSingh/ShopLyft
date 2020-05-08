@@ -100,6 +100,10 @@ class Products with ChangeNotifier {
     return _items.where((prodItem) => prodItem.isFavourite).toList();
   }
 
+  List<Product> getCategoryItems(Categories cat){
+    return _items.where((prodItem) => prodItem.category == cat).toList();
+  }
+
   Product findById(String id) {
     return _items.firstWhere((prod) => prod.id == id);
   }
