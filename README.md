@@ -30,7 +30,7 @@ An E-commerce application built using Flutter, with a Firebase serverless backen
 flutter pub get
 ```
 - Build a project on the FireBase using RealtimeDB
-- Add entries in the following heirarchy to your Database
+- The application adds entries in the following heirarchy to your Database
 ```
 {
   "orders" : {
